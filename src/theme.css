@@ -1,0 +1,49 @@
+:root {
+  --border-color: blue;
+}
+
+.rts-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  border: 1px solid red;
+}
+
+.rts-sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  overflow-y: auto;
+  background-color: #ccc;
+  border: 1px solid red;
+  transition: transform 0.3s ease-out;
+  transform: translateX(-100%);
+  will-change: transform;
+}
+
+.rts-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.rts-main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+  border: 5px solid green;
+}

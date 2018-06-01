@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "airbnb"
+  ],
+  "globals": {
+    "document": true
+  },
+  "rules": {
+    "no-console": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "linebreak-style": 0
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  }
+}
