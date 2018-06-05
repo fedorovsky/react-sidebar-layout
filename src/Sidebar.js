@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import { bool, func } from 'prop-types';
+import { bool, func, node } from 'prop-types';
 
-const Sidebar = (props, context) => {
-  console.log('Sidebar', props, context);
+const Sidebar = ({ children, ...other }, context) => {
+  console.log('Sidebar', other, context);
   return (
     <div
       className={classNames(context.setClassWithTheme('rts-sidebar'))}
@@ -13,20 +13,14 @@ const Sidebar = (props, context) => {
     >
       <button onClick={context.openSidebar}>Open</button>
       <button onClick={context.closeSidebar}>Close</button>
-      <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, repellat.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, repellat.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, repellat.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, repellat.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, repellat.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, repellat.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, repellat.</li>
-      </ul>
+      { children }
     </div>
   );
 };
 
-Sidebar.propTypes = {};
+Sidebar.propTypes = {
+  children: node.isRequired,
+};
 Sidebar.defaultProps = {};
 Sidebar.contextTypes = {
   setClassWithTheme: func,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-class ThemeProvider extends Component {
+class SidebarProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     theme: PropTypes.shape({}),
@@ -52,4 +52,4 @@ class ThemeProvider extends Component {
   }
 }
 
-export default ThemeProvider;
+export default SidebarProvider;
