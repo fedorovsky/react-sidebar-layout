@@ -1,17 +1,20 @@
 import React from 'react';
-import { func } from 'prop-types';
+import { func, node } from 'prop-types';
 
-const Main = (props, context) => {
-  console.log('Main', props, context);
+const Main = ({ children, ...other }, context) => {
+  console.log('Main', other, context);
   return (
     <div className={context.setClassWithTheme('rts-main')}>
       <button onClick={context.openSidebar}>Open</button>
       <button onClick={context.closeSidebar}>Close</button>
+      { children }
     </div>
   );
 };
 
-Main.propTypes = {};
+Main.propTypes = {
+  children: node.isRequired,
+};
 Main.defaultProps = {};
 Main.contextTypes = {
   setClassWithTheme: func,
