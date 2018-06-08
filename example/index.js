@@ -5,6 +5,8 @@ import styles from './index.css';
 
 const THEME_TOGGLE_SIDEBAR = {
   'rts-wrapper': styles['rts-wrapper'],
+  'rts-sidebar': styles['rts-sidebar'],
+  'rts-main': styles['rts-main'],
 };
 
 function Root() {

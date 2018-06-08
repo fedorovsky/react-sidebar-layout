@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -45,9 +45,10 @@ class SidebarProvider extends Component {
     this.setState({ isOpenSidebar: false });
   };
 
+
   render() {
     return (
-      <div>{ this.props.children }</div>
+      <Fragment>{this.props.children}</Fragment>
     );
   }
 }
