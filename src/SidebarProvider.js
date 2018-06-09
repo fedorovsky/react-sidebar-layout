@@ -8,15 +8,15 @@ class SidebarProvider extends Component {
     theme: PropTypes.shape({}),
   };
 
-  static defaultProps = {
-    theme: null,
-  };
-
   static childContextTypes = {
     setClassWithTheme: PropTypes.func,
     isOpenSidebar: PropTypes.bool,
     openSidebar: PropTypes.func,
     closeSidebar: PropTypes.func,
+  };
+
+  static defaultProps = {
+    theme: null,
   };
 
   state = {
@@ -32,6 +32,10 @@ class SidebarProvider extends Component {
     };
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.isOpenSidebar !== this.state.isOpenSidebar;
+  }
+
   setClassWithTheme = (innerClass) => {
     const themeClass = this.props.theme ? this.props.theme[innerClass] : null;
     return classNames(innerClass, themeClass);
@@ -44,7 +48,6 @@ class SidebarProvider extends Component {
   closeSidebar = () => {
     this.setState({ isOpenSidebar: false });
   };
-
 
   render() {
     return (
