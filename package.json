@@ -13,6 +13,7 @@
   "main": "dist/index.js",
   "repository": "https://github.com/fedorovsky/npm-boilerplate",
   "scripts": {
+    "test": "jest --env=jsdom --watch",
     "postcss": "postcss ./src/theme.css -o ./dist/theme.css",
     "clean": "rimraf dist && mkdir dist",
     "dev": "webpack-dev-server",
@@ -34,13 +35,17 @@
     "clean-css-cli": "^4.1.11",
     "css-loader": "^0.28.11",
     "cssnano": "^3.10.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.1.0",
     "path": "^0.12.7",
     "postcss-cli": "^5.0.0",
     "postcss-loader": "^2.1.5",
@@ -61,5 +66,8 @@
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./setupTests.js"
   }
 }
