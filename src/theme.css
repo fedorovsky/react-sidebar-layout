@@ -22,7 +22,6 @@
   background-color: #ccc;
   border: 1px solid red;
   transition: transform 0.3s ease-out;
-  transform: translateX(-100%);
   will-change: transform;
 }
 
@@ -35,7 +34,7 @@
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
 }
 
 .rts-main {
