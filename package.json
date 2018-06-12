@@ -17,7 +17,7 @@
     "postcss": "postcss ./src/theme.css -o ./dist/theme.css",
     "clean": "rimraf dist && mkdir dist",
     "dev": "webpack-dev-server",
-    "js": "babel --no-babelrc ./src -d ./dist/ --presets=babili,env,stage-0,react",
+    "js": "babel --no-babelrc ./src -d ./dist/ --ignore '**/*.test.js' --presets=babili,env,stage-0,react",
     "prepublish": "yarn run clean && yarn run postcss && yarn run js",
     "stylelint:--fix": "stylelint ./**/*.css !./dist/**/*.css --fix"
   },
