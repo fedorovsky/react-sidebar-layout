@@ -6,6 +6,7 @@
 | `yarn install`             | install required dependencies                            |
 | `yarn run dev`             | run development build (from the directory `'./example'`) |
 | `yarn run prepublish`      | prepare to publish on `npm`                              |
+| `yarn run test      `      | run tests                                                |
 | `yarn run stylelint:--fix` | reorder all styles                                       |
 
 ### Configuration `package.json`:  
