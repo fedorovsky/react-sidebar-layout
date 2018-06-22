@@ -4,6 +4,7 @@ import Wrapper from './Wrapper';
 import Sidebar from './Sidebar';
 import Main from './Main';
 import Overlay from './Overlay';
+import SidebarContext from './SidebarContext';
 import SidebarProvider from './SidebarProvider';
 import './theme.css';
 
@@ -11,11 +12,21 @@ const ToggleSidebar = ({ theme, children }) => (
   <SidebarProvider theme={theme}>
     <Wrapper>
       { children }
-      <Overlay />
+      <SidebarContext.Consumer>
+        {
+          ({ setClassWithTheme, isOpenSidebar, closeSidebar }) =>
+            (
+              <Overlay
+                setClassWithTheme={setClassWithTheme}
+                isOpenSidebar={isOpenSidebar}
+                closeSidebar={closeSidebar}
+              />
+            )
+        }
+      </SidebarContext.Consumer>
     </Wrapper>
   </SidebarProvider>
 );
-
 
 ToggleSidebar.propTypes = {
   theme: PropTypes.shape({}),
@@ -24,11 +35,9 @@ ToggleSidebar.propTypes = {
 ToggleSidebar.defaultProps = {
   theme: null,
 };
-ToggleSidebar.contextTypes = {
-  setClassWithTheme: PropTypes.func,
-};
 
 export {
+  SidebarContext,
   Sidebar,
   Main,
 };

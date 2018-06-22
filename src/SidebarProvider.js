@@ -1,18 +1,12 @@
-import React, { Fragment, Component } from 'react';
-import classNames from 'classnames';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import SidebarContext from './SidebarContext';
 
 class SidebarProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     theme: PropTypes.shape({}),
-  };
-
-  static childContextTypes = {
-    setClassWithTheme: PropTypes.func,
-    isOpenSidebar: PropTypes.bool,
-    openSidebar: PropTypes.func,
-    closeSidebar: PropTypes.func,
   };
 
   static defaultProps = {
@@ -22,15 +16,6 @@ class SidebarProvider extends Component {
   state = {
     isOpenSidebar: false,
   };
-
-  getChildContext() {
-    return {
-      setClassWithTheme: this.setClassWithTheme,
-      isOpenSidebar: this.state.isOpenSidebar,
-      openSidebar: this.openSidebar,
-      closeSidebar: this.closeSidebar,
-    };
-  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.isOpenSidebar !== this.state.isOpenSidebar;
@@ -51,7 +36,16 @@ class SidebarProvider extends Component {
 
   render() {
     return (
-      <Fragment>{this.props.children}</Fragment>
+      <SidebarContext.Provider
+        value={{
+          setClassWithTheme: this.setClassWithTheme,
+          isOpenSidebar: this.state.isOpenSidebar,
+          openSidebar: this.openSidebar,
+          closeSidebar: this.closeSidebar,
+        }}
+      >
+        {this.props.children}
+      </SidebarContext.Provider>
     );
   }
 }
