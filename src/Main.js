@@ -1,22 +1,26 @@
 import React from 'react';
-import { func, node } from 'prop-types';
+import { node } from 'prop-types';
+import SidebarContext from './SidebarContext';
 
-const Main = ({ children }, context) => (
-  <div className={context.setClassWithTheme('rts-main')}>
-    <button onClick={context.openSidebar}>Open</button>
-    <button onClick={context.closeSidebar}>Close</button>
-    { children }
-  </div>
+const Main = ({ children }) => (
+  <SidebarContext.Consumer>
+    {
+      ({
+         setClassWithTheme,
+       }) =>
+        (
+          <div className={setClassWithTheme('rts-main')}>
+            { children }
+          </div>
+        )
+    }
+  </SidebarContext.Consumer>
+
 );
 
 Main.propTypes = {
   children: node.isRequired,
 };
 Main.defaultProps = {};
-Main.contextTypes = {
-  setClassWithTheme: func,
-  openSidebar: func,
-  closeSidebar: func,
-};
 
 export default Main;
