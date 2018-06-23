@@ -15,17 +15,11 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'babel-loader' },
-          { loader: 'eslint-loader' },
-        ],
+        use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
       },
       {
         test: /\.css$/,
-        exclude: [
-          path.join(__dirname, 'src'),
-          path.join(__dirname, 'dist'),
-        ],
+        exclude: [path.join(__dirname, 'src'), path.join(__dirname, 'dist')],
         use: [
           { loader: 'style-loader' },
           {
@@ -44,10 +38,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: [
-          path.join(__dirname, 'src'),
-          path.join(__dirname, 'dist'),
-        ],
+        include: [path.join(__dirname, 'src'), path.join(__dirname, 'dist')],
         use: [
           { loader: 'style-loader' },
           {
@@ -61,13 +52,18 @@ module.exports = {
     ],
   },
   devServer: {
-    open: true,
-    // host: '0.0.0.0',
-    // disableHostCheck: true,
+    host: '0.0.0.0',
+    disableHostCheck: true,
     stats: {
       colors: true,
       modules: false,
       children: false,
+      timings: true,
+      publicPath: true,
+      version: true,
+      builtAt: false,
+      entrypoints: false,
+      hash: false,
     },
   },
   resolve: {
@@ -77,7 +73,5 @@ module.exports = {
       components: path.resolve('example/components'),
     },
   },
-  plugins: [
-    htmlWebpackPlugin,
-  ],
+  plugins: [htmlWebpackPlugin],
 };
