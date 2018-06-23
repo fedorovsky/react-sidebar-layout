@@ -4,18 +4,10 @@ import SidebarContext from './SidebarContext';
 
 const Main = ({ children }) => (
   <SidebarContext.Consumer>
-    {
-      ({
-         setClassWithTheme,
-       }) =>
-        (
-          <div className={setClassWithTheme('rts-main')}>
-            { children }
-          </div>
-        )
-    }
+    {({ setClassWithTheme }) => (
+      <div className={setClassWithTheme('rts-main')}>{children}</div>
+    )}
   </SidebarContext.Consumer>
-
 );
 
 Main.propTypes = {

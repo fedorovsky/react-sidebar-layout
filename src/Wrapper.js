@@ -4,13 +4,9 @@ import SidebarContext from './SidebarContext';
 
 const Wrapper = props => (
   <SidebarContext.Consumer>
-    {
-      ({ setClassWithTheme }) => (
-        <div className={setClassWithTheme('rts-wrapper')}>
-          { props.children }
-        </div>
-      )
-    }
+    {({ setClassWithTheme }) => (
+      <div className={setClassWithTheme('rts-wrapper')}>{props.children}</div>
+    )}
   </SidebarContext.Consumer>
 );
 

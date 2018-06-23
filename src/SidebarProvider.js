@@ -21,7 +21,7 @@ class SidebarProvider extends Component {
     return nextState.isOpenSidebar !== this.state.isOpenSidebar;
   }
 
-  setClassWithTheme = (innerClass) => {
+  setClassWithTheme = innerClass => {
     const themeClass = this.props.theme ? this.props.theme[innerClass] : null;
     return classNames(innerClass, themeClass);
   };

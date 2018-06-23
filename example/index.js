@@ -1,6 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import ToggleSidebar, { Sidebar, Main, SidebarContext } from 'react-toggle-sidebar';
+import ToggleSidebar, {
+  Sidebar,
+  Main,
+  SidebarContext,
+} from 'react-toggle-sidebar';
 import styles from './index.css';
 
 const THEME_TOGGLE_SIDEBAR = {
@@ -17,13 +21,11 @@ function Root() {
       </Sidebar>
       <Main>
         <SidebarContext.Consumer>
-          {
-            ({ openSidebar }) => (
-              <div>
-                <button onClick={openSidebar}>Open</button>
-              </div>
-            )
-          }
+          {({ openSidebar }) => (
+            <div>
+              <button onClick={openSidebar}>Open</button>
+            </div>
+          )}
         </SidebarContext.Consumer>
       </Main>
     </ToggleSidebar>

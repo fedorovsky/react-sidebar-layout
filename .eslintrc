@@ -2,19 +2,19 @@
   "env": {
     "jest": true,
   },
-  "extends": [
-    "airbnb"
-  ],
+  "extends": ["airbnb", "prettier"],
   "globals": {
     "document": true
   },
+  "plugins": ["prettier"],
   "rules": {
     "no-console": 0,
     "import/no-unresolved": 0,
     "import/extensions": 0,
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "prettier/prettier": ["error", { "singleQuote": true }]
   },
   "parser": "babel-eslint",
   "parserOptions": {

@@ -11,18 +11,15 @@ import './theme.css';
 const ToggleSidebar = ({ theme, children }) => (
   <SidebarProvider theme={theme}>
     <Wrapper>
-      { children }
+      {children}
       <SidebarContext.Consumer>
-        {
-          ({ setClassWithTheme, isOpenSidebar, closeSidebar }) =>
-            (
-              <Overlay
-                setClassWithTheme={setClassWithTheme}
-                isOpenSidebar={isOpenSidebar}
-                closeSidebar={closeSidebar}
-              />
-            )
-        }
+        {({ setClassWithTheme, isOpenSidebar, closeSidebar }) => (
+          <Overlay
+            setClassWithTheme={setClassWithTheme}
+            isOpenSidebar={isOpenSidebar}
+            closeSidebar={closeSidebar}
+          />
+        )}
       </SidebarContext.Consumer>
     </Wrapper>
   </SidebarProvider>
@@ -36,10 +33,6 @@ ToggleSidebar.defaultProps = {
   theme: null,
 };
 
-export {
-  SidebarContext,
-  Sidebar,
-  Main,
-};
+export { SidebarContext, Sidebar, Main };
 
 export default ToggleSidebar;

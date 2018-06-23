@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import { bool, func } from 'prop-types';
 
-
 const Overlay = props => (
   // eslint-disable-next-line
   <div
