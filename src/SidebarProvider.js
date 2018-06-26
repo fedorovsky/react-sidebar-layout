@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { withStateHandlers, compose } from 'recompose';
 import SidebarContext from './SidebarContext';
 
 class SidebarProvider extends Component {
   static propTypes = {
+    openSidebar: PropTypes.func.isRequired,
+    closeSidebar: PropTypes.func.isRequired,
+    isOpenSidebar: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
     theme: PropTypes.shape({}),
   };
@@ -13,12 +17,8 @@ class SidebarProvider extends Component {
     theme: null,
   };
 
-  state = {
-    isOpenSidebar: false,
-  };
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.isOpenSidebar !== this.state.isOpenSidebar;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.isOpenSidebar !== this.props.isOpenSidebar;
   }
 
   setClassWithTheme = innerClass => {
@@ -26,22 +26,14 @@ class SidebarProvider extends Component {
     return classNames(innerClass, themeClass);
   };
 
-  openSidebar = () => {
-    this.setState({ isOpenSidebar: true });
-  };
-
-  closeSidebar = () => {
-    this.setState({ isOpenSidebar: false });
-  };
-
   render() {
     return (
       <SidebarContext.Provider
         value={{
           setClassWithTheme: this.setClassWithTheme,
-          isOpenSidebar: this.state.isOpenSidebar,
-          openSidebar: this.openSidebar,
-          closeSidebar: this.closeSidebar,
+          isOpenSidebar: this.props.isOpenSidebar,
+          openSidebar: this.props.openSidebar,
+          closeSidebar: this.props.closeSidebar,
         }}
       >
         {this.props.children}
@@ -50,4 +42,12 @@ class SidebarProvider extends Component {
   }
 }
 
-export default SidebarProvider;
+const withStateHandlersHOC = withStateHandlers(
+  { isOpenSidebar: false },
+  {
+    openSidebar: () => () => ({ isOpenSidebar: true }),
+    closeSidebar: () => () => ({ isOpenSidebar: false }),
+  },
+);
+
+export default compose(withStateHandlersHOC)(SidebarProvider);

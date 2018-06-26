@@ -58,6 +58,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "recompose": "^0.27.1",
     "rimraf": "^2.6.2",
     "style-loader": "^0.21.0",
     "stylelint": "^9.2.1",
@@ -71,6 +72,7 @@
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "recompose": "^0.27.1"
   }
 }
