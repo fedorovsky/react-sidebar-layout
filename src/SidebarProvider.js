@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStateHandlers, compose } from 'recompose';
 import SidebarContext from './SidebarContext';
 
-class SidebarProvider extends Component {
+class SidebarProvider extends PureComponent {
   static propTypes = {
     openSidebar: PropTypes.func.isRequired,
     closeSidebar: PropTypes.func.isRequired,
@@ -16,10 +16,6 @@ class SidebarProvider extends Component {
   static defaultProps = {
     theme: null,
   };
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.isOpenSidebar !== this.props.isOpenSidebar;
-  }
 
   setClassWithTheme = innerClass => {
     const themeClass = this.props.theme ? this.props.theme[innerClass] : null;
