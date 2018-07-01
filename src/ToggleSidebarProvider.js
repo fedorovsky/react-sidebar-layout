@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStateHandlers, compose } from 'recompose';
-import SidebarContext from './SidebarContext';
+import ToggleSidebarContext from './ToggleSidebarContext';
 
-class SidebarProvider extends PureComponent {
+class ToggleSidebarProvider extends PureComponent {
   static propTypes = {
     openSidebar: PropTypes.func.isRequired,
     closeSidebar: PropTypes.func.isRequired,
@@ -24,7 +24,7 @@ class SidebarProvider extends PureComponent {
 
   render() {
     return (
-      <SidebarContext.Provider
+      <ToggleSidebarContext.Provider
         value={{
           setClassWithTheme: this.setClassWithTheme,
           isOpenSidebar: this.props.isOpenSidebar,
@@ -33,7 +33,7 @@ class SidebarProvider extends PureComponent {
         }}
       >
         {this.props.children}
-      </SidebarContext.Provider>
+      </ToggleSidebarContext.Provider>
     );
   }
 }
@@ -46,4 +46,4 @@ const withStateHandlersHOC = withStateHandlers(
   },
 );
 
-export default compose(withStateHandlersHOC)(SidebarProvider);
+export default compose(withStateHandlersHOC)(ToggleSidebarProvider);

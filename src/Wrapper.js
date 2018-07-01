@@ -1,13 +1,13 @@
 import React from 'react';
 import { node } from 'prop-types';
-import SidebarContext from './SidebarContext';
+import ToggleSidebarContext from './ToggleSidebarContext';
 
 const Wrapper = props => (
-  <SidebarContext.Consumer>
+  <ToggleSidebarContext.Consumer>
     {({ setClassWithTheme }) => (
       <div className={setClassWithTheme('rts-wrapper')}>{props.children}</div>
     )}
-  </SidebarContext.Consumer>
+  </ToggleSidebarContext.Consumer>
 );
 
 Wrapper.propTypes = {

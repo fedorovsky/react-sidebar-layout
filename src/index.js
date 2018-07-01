@@ -4,15 +4,15 @@ import Wrapper from './Wrapper';
 import Sidebar from './Sidebar';
 import Main from './Main';
 import Overlay from './Overlay';
-import SidebarContext from './SidebarContext';
-import SidebarProvider from './SidebarProvider';
+import ToggleSidebarContext from './ToggleSidebarContext';
+import ToggleSidebarProvider from './ToggleSidebarProvider';
 import './theme.css';
 
 const ToggleSidebar = ({ theme, children }) => (
-  <SidebarProvider theme={theme}>
+  <ToggleSidebarProvider theme={theme}>
     <Wrapper>
       {children}
-      <SidebarContext.Consumer>
+      <ToggleSidebarContext.Consumer>
         {({ setClassWithTheme, isOpenSidebar, closeSidebar }) => (
           <Overlay
             setClassWithTheme={setClassWithTheme}
@@ -20,9 +20,9 @@ const ToggleSidebar = ({ theme, children }) => (
             closeSidebar={closeSidebar}
           />
         )}
-      </SidebarContext.Consumer>
+      </ToggleSidebarContext.Consumer>
     </Wrapper>
-  </SidebarProvider>
+  </ToggleSidebarProvider>
 );
 
 ToggleSidebar.propTypes = {
@@ -33,6 +33,6 @@ ToggleSidebar.defaultProps = {
   theme: null,
 };
 
-export { SidebarContext, Sidebar, Main };
+export { ToggleSidebarContext, Sidebar, Main };
 
 export default ToggleSidebar;

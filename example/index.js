@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import ToggleSidebar, {
   Sidebar,
   Main,
-  SidebarContext,
+  ToggleSidebarContext,
 } from 'react-toggle-sidebar';
 import styles from './index.css';
 
@@ -17,16 +17,19 @@ function Root() {
   return (
     <ToggleSidebar theme={THEME_TOGGLE_SIDEBAR}>
       <Sidebar>
-        <div>Sidebar content</div>
+        <ToggleSidebarContext.Consumer>
+          {({ closeSidebar }) => <button onClick={closeSidebar}>Close</button>}
+        </ToggleSidebarContext.Consumer>
+        <ul>
+          <li>Lorem ipsum dolor sit amet.</li>
+          <li>Lorem ipsum dolor sit amet.</li>
+          <li>Lorem ipsum dolor sit amet.</li>
+        </ul>
       </Sidebar>
       <Main>
-        <SidebarContext.Consumer>
-          {({ openSidebar }) => (
-            <div>
-              <button onClick={openSidebar}>Open</button>
-            </div>
-          )}
-        </SidebarContext.Consumer>
+        <ToggleSidebarContext.Consumer>
+          {({ openSidebar }) => <button onClick={openSidebar}>Open</button>}
+        </ToggleSidebarContext.Consumer>
       </Main>
     </ToggleSidebar>
   );

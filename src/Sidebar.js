@@ -1,23 +1,21 @@
 import React from 'react';
 import classNames from 'classnames';
 import { node } from 'prop-types';
-import SidebarContext from './SidebarContext';
+import ToggleSidebarContext from './ToggleSidebarContext';
 
 const Sidebar = ({ children }) => (
-  <SidebarContext.Consumer>
-    {({ setClassWithTheme, isOpenSidebar, openSidebar, closeSidebar }) => (
+  <ToggleSidebarContext.Consumer>
+    {({ setClassWithTheme, isOpenSidebar }) => (
       <div
         className={classNames(setClassWithTheme('rts-sidebar'))}
         style={{
           transform: isOpenSidebar ? 'translateX(0%)' : 'translateX(-100%)',
         }}
       >
-        <button onClick={openSidebar}>Open</button>
-        <button onClick={closeSidebar}>Close</button>
         {children}
       </div>
     )}
-  </SidebarContext.Consumer>
+  </ToggleSidebarContext.Consumer>
 );
 
 Sidebar.propTypes = {
