@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
@@ -6,9 +7,19 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
   filename: 'index.html',
 });
 
+const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
+
 module.exports = {
   mode: 'development',
-  entry: './example/index.js',
+  entry: [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/dev-server',
+    './example/index.js',
+  ],
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js',
+  },
   devtool: 'source-map',
   module: {
     rules: [
@@ -52,19 +63,8 @@ module.exports = {
     ],
   },
   devServer: {
-    host: '0.0.0.0',
-    disableHostCheck: true,
-    stats: {
-      colors: true,
-      modules: false,
-      children: false,
-      timings: true,
-      publicPath: true,
-      version: true,
-      builtAt: false,
-      entrypoints: false,
-      hash: false,
-    },
+    contentBase: './public',
+    hot: true,
   },
   resolve: {
     alias: {
@@ -73,5 +73,5 @@ module.exports = {
       components: path.resolve('example/components'),
     },
   },
-  plugins: [htmlWebpackPlugin],
+  plugins: [htmlWebpackPlugin, hotModuleReplacementPlugin],
 };
