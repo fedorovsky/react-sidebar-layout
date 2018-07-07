@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
     "postcss": "postcss ./src/theme.css -o ./dist/theme.css",
-    "dev": "webpack-dev-server",
+    "dev": "node server.js",
     "js": "babel --no-babelrc ./src -d ./dist/ --ignore '**/*.test.js' --presets=babili,env,stage-0,react",
     "prepublish": "yarn run clean && yarn run postcss && yarn run js",
     "stylelint:--fix": "stylelint ./**/*.css !./dist/**/*.css --fix",
@@ -74,5 +74,8 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "recompose": "^0.27.1"
+  },
+  "dependencies": {
+    "open": "^0.0.5"
   }
 }
