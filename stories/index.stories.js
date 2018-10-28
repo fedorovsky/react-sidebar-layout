@@ -14,6 +14,7 @@ storiesOf('My Component', module)
     >
       <Layout>
         <Layout.Drawer>
+          123
           <h1>Drawer</h1>
           <h1>Drawer</h1>
           <h1>Drawer</h1>

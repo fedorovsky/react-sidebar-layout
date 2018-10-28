@@ -17,10 +17,12 @@
     "clean": "rimraf dist && mkdir dist",
     "js": "babel --no-babelrc ./src -d ./dist/ --presets=babili,env,stage-0,react",
     "prepublish": "yarn run clean && yarn run js",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 9000"
   },
   "dependencies": {
+    "@storybook/addon-options": "^3.4.11",
     "@storybook/react": "^3.4.11",
+    "storybook-readme": "^4.0.2",
     "styled-components": "^4.0.2"
   },
   "devDependencies": {
@@ -50,8 +52,7 @@
     "prettier": "^1.13.5",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "rimraf": "^2.6.2",
-    "storybook-readme": "^4.0.2"
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "react": "^16.4.0",

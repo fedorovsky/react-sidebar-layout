@@ -1,9 +1,14 @@
-import { configure } from '@storybook/react';
+import * as storybook from '@storybook/react';
+import { setOptions } from '@storybook/addon-options';
 
-// automatically import all files ending in *.stories.js
-const req = require.context('../stories', true, /.stories.js$/);
-function loadStories() {
-  req.keys().forEach(filename => req(filename));
-}
+setOptions({
+  name: 'react-layout-drawer',
+  url: '',
+  goFullScreen: false,
+  showStoriesPanel: true,
+  showAddonPanel: false,
+  showSearchBox: false,
+  sidebarAnimations: true,
+});
 
-configure(loadStories, module);
+storybook.configure(() => require('../stories/index.stories'), module);
