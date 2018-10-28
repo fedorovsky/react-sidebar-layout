@@ -15,8 +15,8 @@
   "scripts": {
     "build-storybook": "build-storybook --output-dir example",
     "clean": "rimraf dist && mkdir dist",
-    "js": "babel --no-babelrc ./src -d ./dist/ --presets=babili,env,stage-0,react",
-    "prepublish": "yarn run clean && yarn run js",
+    "js": "babel --no-babelrc ./src -d ./dist/ --ignore ./src/stories --presets=babili,env,stage-0,react",
+    "prepublish": "yarn run clean && yarn run js && yarn run build-storybook",
     "storybook": "start-storybook -p 9000"
   },
   "dependencies": {

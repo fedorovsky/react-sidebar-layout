@@ -11,4 +11,4 @@ setOptions({
   sidebarAnimations: true,
 });
 
-storybook.configure(() => require('../stories/index.stories'), module);
+storybook.configure(() => require('../src/stories/index.stories'), module);

@@ -1,20 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withDocs } from 'storybook-readme';
+import Page from './components/Page';
 import readme from './readme.stories.md';
-import Layout from '../src/index';
+import Layout from '../Layout';
 
 storiesOf('My Component', module)
   .addDecorator(withDocs(readme))
   .add('Common', () => (
-    <div
-      style={{
-        height: '500px',
-      }}
-    >
+    <Page>
       <Layout>
         <Layout.Drawer>
-          123
           <h1>Drawer</h1>
           <h1>Drawer</h1>
           <h1>Drawer</h1>
@@ -50,5 +46,5 @@ storiesOf('My Component', module)
           </Layout.Consumer>
         </Layout.Page>
       </Layout>
-    </div>
+    </Page>
   ));

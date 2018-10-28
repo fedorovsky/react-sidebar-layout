@@ -13,7 +13,7 @@ type StateType = {
   isOpen: boolean,
 };
 
-class Root extends React.Component<PropsType, StateType> {
+class Layout extends React.Component<PropsType, StateType> {
   static Consumer = LayoutConsumer;
   static Drawer = Drawer;
   static Page = Page;
@@ -44,4 +44,4 @@ class Root extends React.Component<PropsType, StateType> {
   }
 }
 
-export default Root;
+export default Layout;

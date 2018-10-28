@@ -4,8 +4,8 @@
 
 ```js
 
-```
-
+```  
+### Example View:
 <!-- STORY -->
 
 ### Properties
