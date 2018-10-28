@@ -11,7 +11,7 @@
   "repository": "https://github.com/fedorovsky/npm-boilerplate",
   "license": "MIT",
   "author": "Anton Fedorovskyi <anton.fedorovsky@gmail.com>",
-  "main": "dist/index.js",
+  "main": "dist/Layout.js",
   "scripts": {
     "build-storybook": "build-storybook --output-dir example",
     "clean": "rimraf dist && mkdir dist",
