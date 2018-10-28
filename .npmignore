@@ -1,12 +1,8 @@
 .idea/
 .babelrc
-.csscomb.json
 .eslintignore
 .eslintrc
-
 package.json
 yarn.lock
 webpack.config.js
-
 src/
-example/

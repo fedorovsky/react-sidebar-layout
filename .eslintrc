@@ -1,12 +1,9 @@
 {
-  "env": {
-    "jest": true,
-  },
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb", "prettier/react"],
   "globals": {
     "document": true
   },
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "flowtype"],
   "rules": {
     "no-console": 0,
     "import/no-unresolved": 0,
@@ -14,6 +11,7 @@
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "linebreak-style": 0,
+    "arrow-parens": ["error", "as-needed"],
     "prettier/prettier": ["error", { "singleQuote": true }]
   },
   "parser": "babel-eslint",
