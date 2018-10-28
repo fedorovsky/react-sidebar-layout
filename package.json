@@ -13,7 +13,7 @@
   "author": "Anton Fedorovskyi <anton.fedorovsky@gmail.com>",
   "main": "dist/index.js",
   "scripts": {
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook --output-dir example",
     "clean": "rimraf dist && mkdir dist",
     "js": "babel --no-babelrc ./src -d ./dist/ --presets=babili,env,stage-0,react",
     "prepublish": "yarn run clean && yarn run js",
