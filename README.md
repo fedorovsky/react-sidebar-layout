@@ -6,7 +6,6 @@
 | `yarn install`             | install required dependencies                            |
 | `yarn run dev`             | run development build (from the directory `'./example'`) |
 | `yarn run prepublish`      | prepare to publish on `npm`                              |
-| `yarn run test      `      | run tests                                                |
 | `yarn run stylelint:--fix` | reorder all styles                                       |
 
 ### Configuration `package.json`:  
@@ -27,36 +26,26 @@
    ...
 }
 ```  
+### Instructions for using the theme
+* With CSS modules:  
+```
+import theme from './index.css';
 
+<MyComponent theme={theme} />;
+```
+
+* Without CSS modules:  
+```
+import './index.css';
+
+const theme = {
+  'name-component-wrapper': 'name-component-wrapper',
+  'name-component-text': 'name-component-text',
+};
+
+<MyComponent theme={theme} />;
+```
 ### Publish & Update a Package
 `npm adduser`  
 `npm version [ major | minor | patch | premajor | preminor | prepatch | prerelease ]`  
 `npm publish`
-
-### Using
-
-```$javascript
-import React from 'react';
-import { render } from 'react-dom';
-import ToggleSidebar, { Sidebar, Main } from 'react-toggle-sidebar';
-import styles from './index.css';
-
-const THEME_TOGGLE_SIDEBAR = {
-  'rts-wrapper': styles['rts-wrapper'],
-};
-
-function Root() {
-  return (
-    <ToggleSidebar theme={THEME_TOGGLE_SIDEBAR}>
-      <Sidebar>
-        <div>Sidebar content</div>
-      </Sidebar>
-      <Main>
-        <div>Main content</div>
-      </Main>
-    </ToggleSidebar>
-  );
-}
-
-render(<Root />, document.getElementById('container'));
-```

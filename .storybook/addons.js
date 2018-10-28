@@ -1,0 +1,2 @@
+import 'storybook-readme/register';
+

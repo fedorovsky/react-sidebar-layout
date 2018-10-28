@@ -1,38 +1,47 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Wrapper from './Wrapper';
-import Sidebar from './Sidebar';
-import Main from './Main';
-import Overlay from './Overlay';
-import ToggleSidebarContext from './ToggleSidebarContext';
-import ToggleSidebarProvider from './ToggleSidebarProvider';
-import './theme.css';
+// @flow
+import * as React from 'react';
+import { Overlay, Wrapper } from './_styled';
+import { LayoutProvider, LayoutConsumer } from './Context';
+import Drawer from './Drawer';
+import Page from './Page';
 
-const ToggleSidebar = ({ theme, children }) => (
-  <ToggleSidebarProvider theme={theme}>
-    <Wrapper>
-      {children}
-      <ToggleSidebarContext.Consumer>
-        {({ setClassWithTheme, isOpenSidebar, closeSidebar }) => (
-          <Overlay
-            setClassWithTheme={setClassWithTheme}
-            isOpenSidebar={isOpenSidebar}
-            closeSidebar={closeSidebar}
-          />
-        )}
-      </ToggleSidebarContext.Consumer>
-    </Wrapper>
-  </ToggleSidebarProvider>
-);
-
-ToggleSidebar.propTypes = {
-  theme: PropTypes.shape({}),
-  children: PropTypes.node.isRequired,
-};
-ToggleSidebar.defaultProps = {
-  theme: null,
+type PropsType = {
+  children: React.Node,
 };
 
-export { ToggleSidebarContext, Sidebar, Main };
+type StateType = {
+  isOpen: boolean,
+};
 
-export default ToggleSidebar;
+class Root extends React.Component<PropsType, StateType> {
+  static Consumer = LayoutConsumer;
+  static Drawer = Drawer;
+  static Page = Page;
+
+  state = {
+    isOpen: false,
+  };
+
+  openDrawer = () => this.setState({ isOpen: true });
+
+  closeDrawer = () => this.setState({ isOpen: false });
+
+  render() {
+    return (
+      <LayoutProvider
+        value={{
+          isOpen: this.state.isOpen,
+          openDrawer: this.openDrawer,
+          closeDrawer: this.closeDrawer,
+        }}
+      >
+        <Wrapper>
+          {this.props.children}
+          <Overlay isOpen={this.state.isOpen} onClick={this.closeDrawer} />
+        </Wrapper>
+      </LayoutProvider>
+    );
+  }
+}
+
+export default Root;
