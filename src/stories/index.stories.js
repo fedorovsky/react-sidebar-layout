@@ -2,10 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withDocs } from 'storybook-readme';
 import Page from './components/Page';
-import readme from './readme.stories.md';
+import readme from '../../README.md';
 import Layout from '../Layout';
 
-storiesOf('My Component', module)
+storiesOf('Layout', module)
   .addDecorator(withDocs(readme))
   .add('Common', () => (
     <Page>
